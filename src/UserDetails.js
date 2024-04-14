@@ -5,8 +5,8 @@ const UserDetails = ({ userData }) => (
   <div>
     <h2>{userData.name}</h2>
     <img src={userData.avatar_url} alt="Avatar" />
-    <p>Location: {userData.location}</p>
     <p>Bio: {userData.bio}</p>
+    <p>Location: {userData.location}</p>
   </div>
 );
 

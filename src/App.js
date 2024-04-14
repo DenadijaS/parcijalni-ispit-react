@@ -56,9 +56,20 @@ const App = () => {
         className="input"
       />
       <button onClick={fetchData} className="button">
-        GO!
+        SEARCH
       </button>
-      {userData && <UserDetails userData={userData} />}
+      <div className="user-details">
+        {userData && (
+          <>
+            <img
+              src={userData.avatar_url}
+              alt="User Avatar"
+              className="avatar"
+            />
+            <p className="username">{userData.login}</p>
+          </>
+        )}
+      </div>
       {userRepository.length > 0 && (
         <div className="repository-container">
           {userRepository.map((repo) => (
@@ -71,7 +82,7 @@ const App = () => {
       )}
       {userData && (
         <button onClick={handleReset} className="button">
-          Reset
+          RESTART
         </button>
       )}
     </div>
