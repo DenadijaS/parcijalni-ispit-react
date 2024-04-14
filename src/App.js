@@ -11,7 +11,7 @@ const App = () => {
 
   const fetchData = async () => {
     if (!username) {
-      setShowAlert(true);
+      alert("Please enter a username.");
       return;
     }
 
@@ -25,8 +25,8 @@ const App = () => {
       const reposResponse = await fetch(
         `https://api.github.com/users/${username}/repos`
       );
-      const userRepository = await reposResponse.json();
-      setUserRepository(userRepository);
+      const userRepos = await reposResponse.json();
+      setUserRepository(userRepos);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -36,7 +36,6 @@ const App = () => {
     setUsername("");
     setUserData(null);
     setUserRepository([]);
-    setShowAlert(false);
   };
 
   const handleKeyPress = (e) => {
@@ -59,10 +58,16 @@ const App = () => {
       <button onClick={fetchData} className="button">
         GO!
       </button>
-      {showAlert && <p className="alert">Please enter a username.</p>}
       {userData && <UserDetails userData={userData} />}
       {userRepository.length > 0 && (
-        <UserRepository userRepository={userRepository} />
+        <div className="repository-container">
+          {userRepository.map((repo) => (
+            <div key={repo.id} className="repository-card">
+              <h3>{repo.name}</h3>
+              <p>{repo.description}</p>
+            </div>
+          ))}
+        </div>
       )}
       {userData && (
         <button onClick={handleReset} className="button">
