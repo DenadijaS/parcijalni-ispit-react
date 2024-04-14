@@ -55,7 +55,7 @@ const App = () => {
         placeholder="Enter Github username"
         className="input"
       />
-      <button onClick={fetchData} className="button">
+      <button onClick={fetchData} className="button-59">
         SEARCH
       </button>
       <div className="user-details">
@@ -81,7 +81,7 @@ const App = () => {
         </div>
       )}
       {userData && (
-        <button onClick={handleReset} className="button">
+        <button onClick={handleReset} className="button-59" role="button">
           RESTART
         </button>
       )}
