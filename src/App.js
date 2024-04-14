@@ -70,6 +70,16 @@ const App = () => {
           </>
         )}
       </div>
+      <div>
+        <p>
+          {" "}
+          <strong>Bio: </strong> {userData.bio}
+        </p>
+        <p>
+          {" "}
+          <strong>Location: </strong> {userData.location}
+        </p>
+      </div>
       {userRepository.length > 0 && (
         <div className="repository-container">
           {userRepository.map((repo) => (
